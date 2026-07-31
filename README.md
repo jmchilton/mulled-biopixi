@@ -1,6 +1,8 @@
 # mulled-biopixi
 
 [![Python CI](https://github.com/jmchilton/mulled-biopixi/actions/workflows/ci.yml/badge.svg)](https://github.com/jmchilton/mulled-biopixi/actions/workflows/ci.yml)
+[![PyPI version](https://img.shields.io/pypi/v/mulled-biopixi.svg)](https://pypi.org/project/mulled-biopixi/)
+[![Python versions](https://img.shields.io/pypi/pyversions/mulled-biopixi.svg)](https://pypi.org/project/mulled-biopixi/)
 
 `mulled-biopixi` turns a Biopixi-compatible Pixi environment into a
 local mulled container build. It reads `pixi.toml` from the current directory by default, uses the
@@ -9,11 +11,14 @@ packages into an indexed local channel, and calls Galaxy's `mull_targets` implem
 
 ## Installation
 
-Until the package is published to PyPI, install it directly from GitHub:
+Install the latest release from [PyPI](https://pypi.org/project/mulled-biopixi/) with `uv`:
 
 ```console
-uv tool install git+https://github.com/jmchilton/mulled-biopixi.git
+uv tool install mulled-biopixi
 ```
+
+Alternatively, use `pipx install mulled-biopixi`. Upgrade an existing `uv` installation with
+`uv tool upgrade mulled-biopixi`.
 
 Then run it in a Biopixi-compatible project:
 
