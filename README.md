@@ -73,6 +73,8 @@ make ci
 ```
 
 The individual commands are `make format`, `make lint`, `make typing`, `make test`, and
-`make dist`. Install the repository hook with `make pre-commit`.
+`make dist`. Install the repository hook with `make pre-commit`. Maintainers can follow the
+[release checklist](https://github.com/jmchilton/mulled-biopixi/blob/main/RELEASING.md) to publish a
+version through PyPI Trusted Publishing.
 
 This project is licensed under the [MIT License](LICENSE).
