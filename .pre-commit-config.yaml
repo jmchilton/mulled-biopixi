@@ -1,0 +1,28 @@
+repos:
+  - repo: local
+    hooks:
+      - id: isort
+        name: isort
+        entry: uv run --group lint isort --check --diff src tests
+        language: system
+        pass_filenames: false
+      - id: ruff
+        name: ruff
+        entry: uv run --group lint ruff check src tests
+        language: system
+        pass_filenames: false
+      - id: flake8
+        name: flake8
+        entry: uv run --group lint flake8 src tests
+        language: system
+        pass_filenames: false
+      - id: black
+        name: black
+        entry: uv run --group lint black --workers 1 --no-cache --check src tests
+        language: system
+        pass_filenames: false
+      - id: mypy
+        name: mypy
+        entry: uv run --group typing mypy
+        language: system
+        pass_filenames: false

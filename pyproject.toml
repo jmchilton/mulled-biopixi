@@ -1,0 +1,93 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mulled-biopixi"
+version = "0.1.0"
+description = "Build a mulled container from a Biopixi-compatible Pixi environment"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = [
+  "galaxy-tool-util[mulled]>=25.0",
+  "PyYAML>=6",
+  "tomli>=2; python_version < '3.11'",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: POSIX",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+[project.scripts]
+mulled-biopixi = "mulled_biopixi.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/jmchilton/mulled-biopixi"
+Repository = "https://github.com/jmchilton/mulled-biopixi.git"
+Issues = "https://github.com/jmchilton/mulled-biopixi/issues"
+
+[dependency-groups]
+build = ["build", "twine"]
+lint = [
+  "black",
+  "flake8",
+  "flake8-bugbear",
+  "isort",
+  "pre-commit",
+  "ruff",
+]
+test = ["pytest>=8,<9"]
+typing = ["mypy<2", "tomli", "types-PyYAML"]
+
+[tool.uv]
+default-groups = ["test", "lint", "typing", "build"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mulled_biopixi"]
+
+[tool.hatch.build.targets.sdist]
+only-include = ["src", "LICENSE", "README.md", "pyproject.toml"]
+
+[tool.black]
+line-length = 120
+target-version = ["py39"]
+
+[tool.isort]
+profile = "black"
+line_length = 120
+known_first_party = ["mulled_biopixi"]
+force_alphabetical_sort_within_sections = true
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["B", "E4", "E7", "E9", "F"]
+
+[tool.mypy]
+python_version = "3.9"
+files = ["src/mulled_biopixi", "tests"]
+check_untyped_defs = true
+no_implicit_optional = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
